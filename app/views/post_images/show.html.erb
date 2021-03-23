@@ -32,6 +32,7 @@
     <% if post_comment.user == current_user %>
     <div class="comment-delete">
       <%= link_to "削除", post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
+      <!--  post_image_post_comment DELETE /post_images/:post_image_id/post_comments/:id(.:format)  post_comments#destroy  :の後ろのidを渡す必要がある-->
     </div>
     <% end %>
   <% end %>

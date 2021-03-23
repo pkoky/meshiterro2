@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  # before_actionはこのコントローラーが動作する前に実行される。
+
+  # authenticate = 信頼できることを証明する、本物であることを証明する except = 〜を除いては
+  # deviseが用意しているメソッド。未ログイン認証の状態で[ ]以外のページにアクセスするとログイン画面へリダイレクトされる。
+  before_action :authenticate_user!,except: [:top]
+
   # devise利用の機能（ユーザ登録、ログイン認証など）が使われる場合、その前にconfigure_permitted_parametersが実行されます。
   before_action :configure_permitted_parameters, if: :devise_controller?
 
