@@ -17,11 +17,18 @@
         navbar-expand-lg = 指定したブレークポイント（画面幅）に応じてナビゲーションバー、ナビゲーションアイコン（ハンバーガーメニュー）を切り替えて表示。
         navbar-[カラースキーム] この３つはセット。カラースキームの指定がないと画面幅が変化したときに、ナビゲーションアイコンに配色が見当たらないために画面上に要素は存在するが、見えないと言ったことが起こる。-->
         <div class="container">
-          <a class="navbar=brand p-3" href="/"><%= image_tag('logo.png') %></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNabDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navgation">
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png') %></a><!-- navbar-brand = ロゴに使用されるnavbarのサポートclass  p-3  = paddingの指定 -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navgation">
+            <!--navbar-toggler = ナビゲーションアイコン（ハンバーガーメニュー）の枠部分-->
             <span class="navbar-toggler-icon"></span>
+            <!--navbar-toggler-icon = ナビゲーションアイコンの３本線部分。navbar-toggler-icon classに対してbackground-imageで画像が割り当てられている。-->
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <!--ナビゲーションアイコンを開く前に隠しておきたいメニューは「collapse」classが付与された要素の中に入れておく
+          「collapse」classを付与している要素に任意のidを付与する
+          付与したidは「navbar-toggler」classが付与される要素のdata-targetに指定する（頭にセレクタ#をつける）
+          「navbar-toggler」classが付与される要素にdata-toggle="collapse"、data-target="#[id名]"、aria-controls="[id名]"、aria-expanded="false"、aria-label="Toggle navigation"
+          ※この内data-toggle="collapse"、data-target="#[id名]"は必ず指定しなければ、ナビゲーションアイコンの開閉を行うことができませんので、注意しましょう。-->
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
